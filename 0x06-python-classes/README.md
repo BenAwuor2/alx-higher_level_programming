@@ -11,4 +11,7 @@
 |4-square.py|Uses the Square class and adds to the private instance attribute.|
 |5-square.py|Uses the Square class and adds another public instance method.|
 |6-square.py|Uses the Squareclass and adds another private instance attribute.|
+|100-singly_linked_list.py|Write a class Node that defines a node of a singly linked list by|
+|101-square.py|Write a class Square that defines a square by: (based on ___6-square.py___)|
+|102-square.py|Write a class Square that defines a square by: (based on ___4-square.py___)|
 |103-magic_class.py|An uncompleted class that follows certain Python bytecode.|
