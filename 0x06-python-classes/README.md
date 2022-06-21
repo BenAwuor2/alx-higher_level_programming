@@ -2,7 +2,7 @@
 
 ## A directory within the holbertonschool-higher_level_programming repo.
 
-|## File Name|## Description|
+|File Name|Description|
 |---|---|
 |0-square.py|An empty class called Square that defines a square.|
 |1-square.py|A class called Square that defines a square with a private instance attribute.|
