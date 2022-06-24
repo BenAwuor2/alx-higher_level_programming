@@ -24,3 +24,26 @@ def roman_to_int(roman_string):
             end_sum -= current_sum
             current_sum = numbers[i]
     return (current_sum + end_sum)
+
+"""def roman_to_int(roman_string):
+    if type(roman_string) != str:
+        return 0
+
+    roman = {"I" : 1,"V" : 5,"X" : 10,"L" : 50,"C" : 100,"D" : 500,"M" : 1000}
+
+    r = 0
+    Prev_no = 0
+    curr_no = 0
+
+    for letter in (roman_string[::-1]):
+        prev_no = curr_no
+        curr_no = roman[letter]
+
+       # r += (curr_num if curr_num >= prev_num else -curr_num)
+        if curr_no >= prev_no:
+            r += curr_no
+        else:
+            r += -curr_no
+
+    return r"""
+
