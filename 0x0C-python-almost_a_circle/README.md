@@ -2,7 +2,7 @@
 
 ## The AirBnB project 
 ### This project reviews everything about **Python**:
-    > Including
+    
       1.Import
       2.Exceptions
       3.Class
