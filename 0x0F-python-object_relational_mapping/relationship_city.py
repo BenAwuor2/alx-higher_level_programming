@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-Task 14:
-model_city.py
-Create a new table with the class definition of City
+Task 15:
+relationship_city.py
+Improve the model_city.py file
 Uses:
-model_state.py
+relationship_state.py
 """
 from sys import argv
-from model_state import Base, State
+from relationship_state import Base, State
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 
