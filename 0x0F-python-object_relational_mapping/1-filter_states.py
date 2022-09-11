@@ -1,20 +1,35 @@
 #!/usr/bin/python3
+"""
+Task 1:
+1-filter_states.py
+List all states with a name starting with N (upper N)
+    from the database hbtn_0e_0_usa
+Uses:
+0-select_states.sql
+"""
 
-
-import MySQLdb
-from sys import argv
-
-'''
-lists all states with starting name with N
-from the database hbtn_0e_0_usa
-'''
 if __name__ == "__main__":
-    con = MySQLdb.connect(
-        host="localhost", port=3306, user=argv[1],
-        password=argv[2], database=argv[3])
-    cursor = con.cursor()
-    cursor.execute(
-            "SELECT * FROM states WHERE name LIKE BINARY 'N%'ORDER BY id ASC")
-    db = cursor.fetchall()
-    for i in db:
-        print(i)
+    from sys import argv
+    import MySQLdb
+
+    sql_user = argv[1]
+    sql_pass = argv[2]
+    db_name = argv[3]
+
+    db = MySQLdb.connect(
+        "localhost",
+        sql_user,
+        sql_pass,
+        db_name
+    )
+
+    cur = db.cursor()
+    amount = cur.execute("SELECT id, name FROM states ORDER BY states.id;")
+
+    for i in range(0, amount):
+        results = cur.fetchone()
+        if results[1][0] == 'N':
+            print(results)
+
+    cur.close()
+    db.close()
