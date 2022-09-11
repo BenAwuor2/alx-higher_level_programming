@@ -1,37 +1,25 @@
 #!/usr/bin/python3
 """
-Task 100:
-100-relationship_states_cities.py
-Create the state California and add the city San Francisco
-Uses:
-100-relationship_states_cities.sql
-relationship_state.py
-relationship_city.py
+All states via SQLAlchemy
 """
+from sys import argv
+from relationship_state import Base, State
+from relationship_city import City
+from sqlalchemy import (create_engine)
+from sqlalchemy.orm import Session
 
 if __name__ == "__main__":
-    from sys import argv
-    from sqlalchemy import create_engine
-    from sqlalchemy.orm import sessionmaker
-    from relationship_state import Base, State
-    from relationship_city import City
-
-    sql_user = argv[1]
-    sql_pass = argv[2]
-    db_name = argv[3]
-
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
-                           .format(sql_user, sql_pass, db_name))
-
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
+                           format(argv[1], argv[2], argv[3]),
+                           pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    session = Session(engine)
+    new_state = State(name='California')
 
-    inst_state = State(name="California")
+    new_city = City(name='San Francisco')
+    new_state.cities.append(new_city)
 
-    inst_state.cities = [City(name="San Francsico")]
-    session.add(inst_state)
-
+    session.add(new_state)
     session.commit()
     session.close()
