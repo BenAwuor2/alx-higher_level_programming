@@ -17,10 +17,10 @@ if __name__ == "__main__":
     db = MySQLdb.connect(
         host="127.0.0.1",
         port=3306,
-        user=papaoketch2,
-        passwd=P12a1995,
-        db=hbtn_0e_0_usa
-        )
+        user=sql_user,
+        passwd=sql_pass,
+        db=db_name
+    )
 
     cur = db.cursor()
     amount = cur.execute("SELECT * FROM states ORDER BY states.id;")
