@@ -1,21 +1,21 @@
 #!/usr/bin/python3
 """
-Python script that takes in a letter and sends a POST request to
-http://0.0.0.0:5000/search_user with the letter as a parameter
+Task 8:
+Sends POST request to http://0.0.0.0:5000/search_user
+8-json_api.py
 """
 import requests
 from sys import argv
 
-if __name__ == '__main__':
-    q = argv[1] if len(argv) == 2 else ""
-    url = 'http://0.0.0.0:5000/search_user'
-    r = requests.post(url, data={'q': q})
+if __name__ == "__main__":
+    q = ""
+    if len(argv) > 1:
+        q = argv[1]
+    req = requests.post("http://0.0.0.0:5000/search_user", data={'q': q})
     try:
-        r_dict = r.json()
-        id, name = r_dict.get('id'), r_dict.get('name')
-        if len(r_dict) == 0 or not id or not name:
+        if req.json():
+            print("[{}] {}".format(req.json()["id"], req.json()["name"]))
+        elif len(req.json()) is 0:
             print("No result")
-        else:
-            print("[{}] {}".format(r_dict.get('id'), r_dict.get('name')))
-    except:
+    except ValueError:
         print("Not a valid JSON")
